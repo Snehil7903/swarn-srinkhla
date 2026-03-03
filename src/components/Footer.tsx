@@ -75,14 +75,15 @@ export default function Footer() {
           <h4 className="footer-reveal text-silver font-sans uppercase tracking-[0.2em] text-xs mb-2">Contact</h4>
           <p className="footer-reveal text-silver/70 font-sans text-sm">
             123 Heritage Valley Road<br />
-            Serenity Hills, SH 45092
+            Vananchal Hills, JH 825319
           </p>
           <a href="mailto:concierge@swarnsrinkhla.com" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">
-            concierge@swarnsrinkhla.com
+            heritage@swarnsrinkhla.com
           </a>
           <a href="tel:+18005550199" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
-            +1 (800) 555-0199
+            +91 7301112075
           </a>
+          <p className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">Founder-Shekhar Raj</p>
         </div>
       </div>
 
@@ -91,6 +92,7 @@ export default function Footer() {
         <p className="footer-reveal text-silver/50 font-sans text-xs mb-4 md:mb-0">
           &copy; {new Date().getFullYear()} Swarn Srinkhla Resort. All rights reserved.
         </p>
+        <p className="footer-reveal text-silver/50 font-sans text-xs mb-4 md:mb-0">Developed by Snehil Raj</p>
         <div className="flex gap-6">
           <a href="#" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">Privacy Policy</a>
           <a href="#" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">Terms of Service</a>
