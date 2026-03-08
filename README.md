@@ -7,7 +7,7 @@
 
 A modern and responsive resort website built with **Next.js**, featuring smooth scrolling, immersive animations, and a visually engaging user interface.
 
-Live Demo: https://srinkhla.vercel.app/
+Live Demo: https://swarn-srinkhla.vercel.app/
 
 ## Tech Stack
 
