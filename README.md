@@ -25,9 +25,3 @@ Live Demo: https://srinkhla.vercel.app/
 
 This project focuses on **creating an immersive UI experience** for hospitality websites. It demonstrates advanced frontend skills like animation handling, smooth page transitions, and responsive layouts.
 
-## Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/Snehil7903/project-name
