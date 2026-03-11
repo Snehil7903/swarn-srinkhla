@@ -4,6 +4,7 @@ import Suites from "@/components/Suites";
 import Dining from "@/components/Dining";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Suites />
       <Dining />  
       <Gallery />
+      <Contact />
       <Footer />
     </main>
   );
