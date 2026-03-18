@@ -37,7 +37,7 @@ export default function Navbar() {
     <>
       {/* --- MAIN NAVIGATION BAR --- */}
       <nav
-        className={`fixed top-0 left-0 w-full z-[60] px-6 md:px-12 flex items-center justify-between transition-[background-color,padding,border-color] duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-60 px-6 md:px-12 flex items-center justify-between transition-[background-color,padding,border-color] duration-500 ease-in-out ${
           isScrolled 
             ? "bg-obsidian/90 backdrop-blur-md py-4 border-b border-gold/10" 
             : "bg-transparent py-6 border-b border-transparent"
@@ -75,7 +75,7 @@ export default function Navbar() {
 
       {/* --- TRANSPARENT MOBILE SIDEBAR --- */}
       <div 
-        className={`fixed inset-0 z-[50] flex justify-end transition-opacity duration-500 md:hidden ${
+        className={`fixed inset-0 z-50 flex justify-end transition-opacity duration-500 md:hidden ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
