@@ -81,7 +81,7 @@ export default function Footer() {
             heritage@swarnsrinkhla.com
           </a>
           <a href="tel:+18005550199" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
-            +91 7301112075
+            +91 6205711894
           </a>
           <p className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">Founder-Shekhar Raj</p>
         </div>
