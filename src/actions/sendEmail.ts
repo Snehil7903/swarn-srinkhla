@@ -18,7 +18,7 @@ export async function sendEmail(formData: FormData) {
   try {
     const data = await resend.emails.send({
       from: "Swarn Srinkhla Concierge <onboarding@resend.dev>", // Resend's testing email
-      to: "raj6205711@gmail.com", // <-- REPLACE THIS WITH YOUR REAL EMAIL
+      to: "snehilraj9570@gmail.com", // <-- REPLACE THIS WITH YOUR REAL EMAIL
       subject: `New Concierge Inquiry from ${name}`,
       html: `
         <div style="font-family: sans-serif; color: #1A1A1A;">
