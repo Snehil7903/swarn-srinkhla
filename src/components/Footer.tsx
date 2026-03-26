@@ -83,7 +83,7 @@ export default function Footer() {
           <a href="tel:+18005550199" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
             +91 6205711894
           </a>
-          <p className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">Founder-Shekhar Raj</p>
+          <p className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">Owner-Shekhar</p>
         </div>
       </div>
 
