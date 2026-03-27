@@ -3,10 +3,9 @@ datasource db {
   provider = "postgresql"
 }
 
-// Define custom output path for generated Prisma Client
+// Use default output location for generated Prisma Client
 generator client {
   provider = "prisma-client-js"
-  output   = "/app/generated/prisma-client"
 }
 
 model Guest {
