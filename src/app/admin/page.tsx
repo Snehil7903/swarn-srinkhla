@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { updateReservationStatus } from "@/actions/updateStatus";
+import { deleteReservation } from "@/actions/deleteReservation"; // Added import
 import Link from "next/link";
-// Standard import that Vercel's TS compiler understands 100%
 import type { Reservation, Guest, Suite } from "@prisma/client";
 import LogoutButton from "@/components/LogoutButton";
 
@@ -12,7 +12,6 @@ type ReservationWithDetails = Reservation & {
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  // Fetch reservations with related data
   const reservations = (await prisma.reservation.findMany({
     include: {
       guest: true,
@@ -27,7 +26,6 @@ export default async function AdminDashboard() {
     <main className="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] py-24 px-6 md:px-12 lg:px-24 font-sans selection:bg-[#c5a358] selection:text-black">
       <div className="max-w-6xl mx-auto">
         
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-[#c5a358]/20 pb-8 gap-6">
           <div>
             <span className="text-[#c5a358] tracking-[0.4em] uppercase text-[10px] mb-3 block font-medium">
@@ -46,7 +44,6 @@ export default async function AdminDashboard() {
           </Link>
         </div>
 
-        {/* Dashboard Table Container */}
         <div className="bg-[#141414] border border-[#c5a358]/10 shadow-2xl overflow-hidden rounded-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -71,7 +68,6 @@ export default async function AdminDashboard() {
                   reservations.map((res: ReservationWithDetails) => (
                     <tr key={res.id} className="group hover:bg-[#ffffff]/[0.02] transition-all duration-300">
                       
-                      {/* Guest Column */}
                       <td className="p-8">
                         <p className="font-serif text-lg text-[#ffffff] group-hover:text-[#c5a358] transition-colors">
                           {res.guest.name}
@@ -81,12 +77,10 @@ export default async function AdminDashboard() {
                         </p>
                       </td>
                       
-                      {/* Suite Column */}
                       <td className="p-8 text-sm font-light tracking-wide text-[#ffffff]/80 uppercase">
                         {res.suite.name}
                       </td>
                       
-                      {/* Dates Column */}
                       <td className="p-8 text-[12px]">
                         <p className="text-[#ffffff]/90 tracking-widest uppercase">
                           {new Date(res.checkIn).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' })}
@@ -96,12 +90,10 @@ export default async function AdminDashboard() {
                         </p>
                       </td>
                       
-                      {/* Price Column */}
                       <td className="p-8 text-sm tracking-[0.1em] font-medium">
                         ₹{(res.totalPrice / 100).toLocaleString('en-IN')}
                       </td>
                       
-                      {/* Status Column */}
                       <td className="p-8">
                         <span className={`text-[9px] tracking-[0.3em] uppercase px-4 py-1.5 rounded-full border transition-all duration-500 ${
                           res.status === "CONFIRMED" 
@@ -112,26 +104,47 @@ export default async function AdminDashboard() {
                         </span>
                       </td>
                       
-                      {/* Actions Column */}
+                      {/* ACTIONS COLUMN - Updated with Delete */}
                       <td className="p-8 text-right">
-                        {res.status === "PENDING" ? (
-                          <form action={updateReservationStatus}>
+                        <div className="flex items-center justify-end gap-6">
+                          {res.status === "PENDING" ? (
+                            <form action={updateReservationStatus}>
+                              <input type="hidden" name="id" value={res.id} />
+                              <button 
+                                type="submit" 
+                                className="text-[10px] tracking-[0.2em] uppercase border border-[#c5a358] text-[#c5a358] px-5 py-2 hover:bg-[#c5a358] hover:text-black transition-all duration-300 active:scale-95"
+                              >
+                                Confirm
+                              </button>
+                            </form>
+                          ) : (
+                            <div className="flex items-center justify-end gap-2 text-[#ffffff]/20">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-[9px] uppercase tracking-widest">Locked</span>
+                            </div>
+                          )}
+
+                          {/* DELETE FORM */}
+                          <form 
+                            action={deleteReservation}
+                            onSubmit={(e) => {
+                              if (!confirm("Remove this reservation permanently?")) e.preventDefault();
+                            }}
+                          >
                             <input type="hidden" name="id" value={res.id} />
                             <button 
                               type="submit" 
-                              className="text-[10px] tracking-[0.2em] uppercase border border-[#c5a358] text-[#c5a358] px-5 py-2 hover:bg-[#c5a358] hover:text-black transition-all duration-300 active:scale-95"
+                              className="text-[#ffffff]/20 hover:text-red-500 transition-colors"
+                              title="Delete Reservation"
                             >
-                              Confirm
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
                             </button>
                           </form>
-                        ) : (
-                          <div className="flex items-center justify-end gap-2 text-[#ffffff]/20">
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-[9px] uppercase tracking-widest">Locked</span>
-                          </div>
-                        )}
+                        </div>
                       </td>
                       
                     </tr>
@@ -142,7 +155,6 @@ export default async function AdminDashboard() {
           </div>
         </div>
 
-        {/* Footer info */}
         <p className="mt-8 text-center text-[9px] text-[#ffffff]/20 uppercase tracking-[0.4em]">
           Secure Administrative Session • Swarn Srinkhla Resorts
         </p>
