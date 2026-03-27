@@ -1,14 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { updateReservationStatus } from "@/actions/updateStatus";
 import Link from "next/link";
-import type { Reservation, Guest, Suite } from "../../generated/prisma";
+// Standard import that Vercel's TS compiler understands 100%
+import type { Reservation, Guest, Suite } from "@prisma/client";
 
-// Define the combined type so TypeScript knows 'res' has .guest and .suite
 type ReservationWithDetails = Reservation & {
   guest: Guest;
   suite: Suite;
 };
-
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
