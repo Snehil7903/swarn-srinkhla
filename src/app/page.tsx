@@ -5,6 +5,7 @@ import Dining from "@/components/Dining";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import Reserve from "@/components/Reserve";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Suites />
       <Dining />  
       <Gallery />
+      <Reserve/>
       <Contact />
       <Footer />
     </main>

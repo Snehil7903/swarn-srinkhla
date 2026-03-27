@@ -1,0 +1,51 @@
+// Define database connection via the `DATABASE_URL` env var
+datasource db {
+  provider = "postgresql"
+}
+
+// Define custom output path for generated Prisma Client
+generator client {
+  provider = "prisma-client-js"
+  output   = "/app/generated/prisma-client"
+}
+
+model Guest {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  phone        String?
+  createdAt    DateTime      @default(now())
+  
+  // Relational link: A guest can have multiple reservations over time
+  reservations Reservation[] 
+}
+
+model Suite {
+  id            String        @id @default(cuid())
+  name          String
+  description   String
+  pricePerNight Int           // Stored in cents (e.g., $1000 = 100000) to avoid math errors
+  maxOccupancy  Int
+  image         String
+  
+  // Relational link: A suite will have a history of many reservations
+  reservations  Reservation[]
+}
+
+model Reservation {
+  id            String   @id @default(cuid())
+  checkIn       DateTime
+  checkOut      DateTime
+  totalPrice    Int
+  status        String   @default("PENDING") // PENDING, CONFIRMED, or CANCELLED
+  
+  // Link back to the Guest
+  guestId       String
+  guest         Guest    @relation(fields: [guestId], references: [id])
+  
+  // Link back to the Suite
+  suiteId       String
+  suite         Suite    @relation(fields: [suiteId], references: [id])
+  
+  createdAt     DateTime @default(now())
+}
