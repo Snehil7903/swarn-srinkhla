@@ -1,8 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { updateReservationStatus } from "@/actions/updateStatus";
 import Link from "next/link";
-// Import the types from the generated Prisma Client
-import { Reservation, Guest, Suite } from "@prisma/client";
+import type { Reservation, Guest, Suite } from "../../generated/prisma";
 
 // Define the combined type so TypeScript knows 'res' has .guest and .suite
 type ReservationWithDetails = Reservation & {
