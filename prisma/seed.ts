@@ -1,4 +1,4 @@
-import "dotenv/config"; // <-- Add this line
+import "dotenv/config";
 import { prisma } from "../src/lib/prisma";
 
 async function main() {

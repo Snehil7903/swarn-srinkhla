@@ -3,6 +3,7 @@ import { updateReservationStatus } from "@/actions/updateStatus";
 import Link from "next/link";
 // Standard import that Vercel's TS compiler understands 100%
 import type { Reservation, Guest, Suite } from "@prisma/client";
+import LogoutButton from "@/components/LogoutButton";
 
 type ReservationWithDetails = Reservation & {
   guest: Guest;
@@ -36,6 +37,7 @@ export default async function AdminDashboard() {
               Booking <span className="text-[#c5a358] italic font-light">Management</span>
             </h1>
           </div>
+          <LogoutButton />
           <Link 
             href="/" 
             className="text-[10px] tracking-[0.2em] uppercase hover:bg-[#c5a358] hover:text-black transition-all duration-500 border border-[#c5a358]/40 px-6 py-3"
