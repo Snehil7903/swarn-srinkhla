@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +32,7 @@ export default function Footer() {
 
   return (
     <footer ref={footerRef} className="relative bg-obsidian pt-32 pb-12 px-6 md:px-12 lg:px-24 border-t border-gold/10 overflow-hidden">
-      
+
       {/* Top Section: Large CTA */}
       <div className="flex flex-col items-center text-center mb-24">
         <span className="footer-reveal text-gold tracking-[0.3em] uppercase text-xs md:text-sm font-sans mb-6 block">
@@ -49,7 +50,7 @@ export default function Footer() {
 
       {/* Middle Section: Links Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-20">
-        
+
         {/* Brand Column */}
         <div className="lg:col-span-2">
           <div className="footer-reveal text-gold font-serif text-3xl tracking-widest uppercase mb-6">
@@ -94,8 +95,12 @@ export default function Footer() {
         </p>
         <p className="footer-reveal text-silver/50 font-sans text-xs mb-4 md:mb-0">Developed by Snehil Raj</p>
         <div className="flex gap-6">
-          <a href="#" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">Privacy Policy</a>
-          <a href="#" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">Terms of Service</a>
+          <Link href="/privacy" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="footer-reveal text-silver/50 hover:text-gold transition-colors duration-300 font-sans text-xs">
+            Terms of Service
+          </Link>
         </div>
       </div>
 
