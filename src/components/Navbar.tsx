@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* Desktop CTA & Mobile Toggle */}
         <div className="flex items-center gap-6">
           <button className="hidden md:block border border-gold text-gold px-6 py-2 text-xs uppercase tracking-[0.2em] hover:bg-gold hover:text-obsidian transition-all duration-300">
-            Reserve
+            <a href="#reserve">Reserve</a>
           </button>
           
           {/* Mobile Hamburger / Close Button */}

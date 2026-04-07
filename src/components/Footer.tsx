@@ -43,7 +43,7 @@ export default function Footer() {
         </h2>
         <div className="footer-reveal">
           <button className="border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.2em] hover:bg-gold hover:text-obsidian transition-all duration-500">
-            Make a Reservation
+            <a href="#reserve">Make a Reservation</a>
           </button>
         </div>
       </div>
