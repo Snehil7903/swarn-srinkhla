@@ -30,6 +30,16 @@ export default function Footer() {
     return () => ctx.revert();
   }, []);
 
+  // Helper to slugify links (e.g., "Fine Dining" -> "/fine-dining")
+  const slugify = (text: string) => `/${text.toLowerCase().replace(/\s+/g, "-")}`;
+
+  const navLinks = [
+    { name: "The Resort", href: "/#about" },
+    { name: "Signature Suites", href: "/#suites" },
+    { name: "Fine Dining", href: "/#dining" },
+    { name: "Wellness & Spa", href: "/#gallery" }
+  ];
+
   return (
     <footer ref={footerRef} className="relative bg-obsidian pt-32 pb-12 px-6 md:px-12 lg:px-24 border-t border-gold/10 overflow-hidden">
 
@@ -42,9 +52,9 @@ export default function Footer() {
           Begin Your <span className="text-gold italic">Journey</span>
         </h2>
         <div className="footer-reveal">
-          <button className="border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.2em] hover:bg-gold hover:text-obsidian transition-all duration-500">
-            <a href="#reserve">Make a Reservation</a>
-          </button>
+          <Link href="/reservations" className="border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.2em] hover:bg-gold hover:text-obsidian transition-all duration-500 inline-block">
+            Make a Reservation
+          </Link>
         </div>
       </div>
 
@@ -64,10 +74,14 @@ export default function Footer() {
         {/* Navigation Links */}
         <div className="flex flex-col gap-4">
           <h4 className="footer-reveal text-silver font-sans uppercase tracking-[0.2em] text-xs mb-2">Explore</h4>
-          {["The Resort", "Signature Suites", "Fine Dining", "Wellness & Spa"].map((link) => (
-            <a key={link} href="#" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
-              {link}
-            </a>
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit"
+            >
+              {link.name}
+            </Link>
           ))}
         </div>
 
@@ -81,10 +95,10 @@ export default function Footer() {
           <a href="mailto:concierge@swarnsrinkhla.com" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">
             heritage@swarnsrinkhla.com
           </a>
-          <a href="tel:+18005550199" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
+          <a href="tel:+916205711894" className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit">
             +91 6205711894
           </a>
-          <p className="footer-reveal text-silver/70 hover:text-gold transition-colors duration-300 font-sans text-sm w-fit mt-2">Owner-Shekhar</p>
+          <p className="footer-reveal text-silver/70 font-sans text-sm w-fit mt-2">Owner: Shekhar</p>
         </div>
       </div>
 
